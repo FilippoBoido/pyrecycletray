@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pyrecycletray"
-version = "0.1.1"
+version = "0.2.0"
 description = "A simple tray icon which helps you bring the trash out"
 authors = ["filippo.boido <filippo.boido@factoryautomation.info>"]
 license = "GNU GENERAL PUBLIC LICENSE"
@@ -16,7 +16,7 @@ mypy = "^0.982"
 commitizen = "^2.35.0"
 
 [tool.commitizen]
-version = "0.1.1"
+version = "0.2.0"
 version_files = [
     "pyrecycletray/__version__.py"
 ]

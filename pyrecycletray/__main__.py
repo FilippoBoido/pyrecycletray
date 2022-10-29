@@ -1,27 +1,13 @@
-import os
-import pystray
-from PIL import Image
-from resources.constants import RECYCLE_IMAGE
-
-working_dir = os.getcwd()
-
-
-def get_tray_image():
-    image = Image.open(
-        os.path.join(
-            working_dir,
-            'resources',
-            RECYCLE_IMAGE))
-
-    return image
+from pyrecycletray.custom_types import IconName
+from pyrecycletray.tray import Tray
 
 
 def main():
-    icon = pystray.Icon(
-        'recycletray',
-        icon=get_tray_image())
-
-    icon.run()
+    try:
+        tray = Tray(name=IconName('test'))
+        tray.run()
+    finally:
+        tray.stop()
 
 
 if __name__ == '__main__':

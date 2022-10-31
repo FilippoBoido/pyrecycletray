@@ -5,17 +5,16 @@ from pathlib import Path
 from pystray import Icon
 from PIL import Image as ImageModule, ImageDraw
 from PIL.Image import Image
-from typing import Optional
 from .resources.index import icon_map  # type: ignore
 from .custom_types import IconName
 
 
 class Tray:
 
-    def __init__(self, name: IconName):
+    def __init__(self, name: IconName = IconName('default')):
         self.name: IconName = name
-        self.icon: Icon = Icon(name=name, icon=self.get_image())
-        self.image: Optional[Image] = None
+        self.image: Image = self.get_image()
+        self.icon: Icon = Icon(name=name, icon=self.image)
 
     @functools.cache
     def get_image(self) -> Image:
@@ -34,11 +33,13 @@ class Tray:
         return self.image
 
     @functools.singledispatchmethod
-    def set_image(self, image: None) -> None:
-        raise TypeError(f"{type(image)} is not an accepted type")
+    def set_image(self, *args) -> None:
+        types = [type(arg).__name__ for arg in args]
+        raise TypeError(f"set_image called with wrong argument type(s) {types}")
 
     @set_image.register
     def _(self, image: Image) -> None:
+        self.image = image
         self.icon.icon = image
 
     @set_image.register
@@ -54,6 +55,7 @@ class Tray:
             (0, height / 2, width / 2, height),
             fill=color_2)
         self.icon.icon = image
+        self.image = image
 
     def run(self) -> None:
         self.icon.run_detached()

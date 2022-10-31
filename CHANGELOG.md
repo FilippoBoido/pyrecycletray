@@ -1,4 +1,4 @@
-## 0.2.0 (2022-10-30)
+## Unreleased
 
 ### Feat
 
@@ -8,17 +8,13 @@
 - **index.py**: add icon_map
 - add Tray class in tray.py
 - run pystray with recycle icon
+- sync poetry and cz versioning
+
+### Fix
+
+- **Tray**: image set to None in __init__ and set self.image in set_image
 
 ### Refactor
 
 - **__main__.py**: relocate code
-
-## 0.1.1 (2022-10-22)
-
-### Feat
-
-- sync poetry and cz versioning
-
-### Refactor
-
 - create basic project structure

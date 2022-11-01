@@ -15,6 +15,9 @@ class Tray:
     def __init__(self, name: IconName = IconName('default')):
         """Tray base class
 
+        >>>Tray().name
+        'default'
+
         Args:
             name: Name of the icon image
         """

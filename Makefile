@@ -13,4 +13,4 @@ dev:
 prod:
 	poetry add $(install)
 doctest:
-	poetry run python pyrecycletray/tray.py
+	poetry run python pyrecycletray/tray.py -v
